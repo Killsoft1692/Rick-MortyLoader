@@ -18,8 +18,6 @@ async def fetch_data(session: aiohttp.ClientSession, data_type: str, endpoint: s
             data = await response.json()
             fetched_data = data['results']
             return data_type, [Info(str(uuid.uuid4()), item['name'], item) for item in fetched_data]
-        else:
-            pass
 
 
 async def main() -> None:

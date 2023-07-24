@@ -29,7 +29,7 @@ async def main() -> None:
         for data_type in settings.AVAILABLE_TYPES:
             # Let's assume that we have endpoint that gives for us only count,
             # and we know that for each entity we'll have around 50 pages
-            for page in range(1, 51):
+            for page in range(1, settings.COUNT_OF_PAGES + 1):
                 tasks.append(
                     fetch_data(
                         session, data_type, f"{settings.API_BASE_URL}{data_type}/?page={page}"

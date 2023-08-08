@@ -35,8 +35,8 @@ async def main() -> None:
                 )
         # Filtering results
         results = await asyncio.gather(*tasks)
-        for position,  data_type in enumerate(settings.AVAILABLE_TYPES):
-            raw_data = filter(lambda x: x[0] == settings.AVAILABLE_TYPES[position], filter(bool, results))
+        for data_type in settings.AVAILABLE_TYPES:
+            raw_data = filter(lambda x: x[0] == data_type, filter(bool, results))
             filtered_objects = [item for _, inner_list in raw_data for item in inner_list]
             with open(f"{data_type}s.json", 'w') as file:
                 json.dump(
